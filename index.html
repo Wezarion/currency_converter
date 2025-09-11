@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator walut</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body>
+    <form class="form js-form">
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">Kalkulator walut</legend>
+            <p class="form__label">
+                <label>
+                    Wybierz pare walutową:
+                    <select class="form__select js-exchange" name="selectedCurrency">
+                        <option value=0.24 selected>PLN-EUR</option>
+                        <option value=0.27>PLN-USD</option>
+                        <option value=4.25>EUR-PLN</option>
+                        <option value=3.65>USD-PLN</option>
+                        <option value=0.86>USD-EUR</option>
+                        <option value=1.16>EUR-USD</option>
+                    </select>
+                </label>
+            </p>
+            <p class="form__label">
+                <label>
+                    Podaj kwote (min 10): <input class="form__select js-amount" type="number" placeholder="1000"
+                        step="any" min="10" required></imput>
+                </label>
+            </p>
+            <p class="form__final">
+                Po przeliczaeniu: <strong class="form__final--value js-final">Kwota</strong>
+            </p>
+        </fieldset>
+    </form>
+</body>
