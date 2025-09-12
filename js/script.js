@@ -1,21 +1,56 @@
-let formElement = document.querySelector(".js-form")
-let exchangeElement = document.querySelector(".js-exchange")
-let amountElement = document.querySelector(".js-amount")
-let finalElement = document.querySelector(".js-final")
+{
+    const formElement = document.querySelector(".js-form")
+    const exchangeElement = document.querySelector(".js-exchange")
+    const amountElement = document.querySelector(".js-amount")
+    const finalElement = document.querySelector(".js-final")
 
-const ratePLNEUR = 0.24;
-const ratePLNUSD = 0.27;
-const rateEURPLN = 4.25;
-const rateUSDPLN = 3.65;
-const rateUSDEUR = 0.86;
-const rateEURUSD = 1.16;
+formElement.addEventListener("input", () => { 
+    const amount = amountElement.value;
+    const exchange = exchangeElement.value;
+    
+    const ratePLNEUR = 0.24;
+    const ratePLNUSD = 0.27;
+    const rateEURPLN = 4.25;
+    const rateUSDPLN = 3.65;
+    const rateUSDEUR = 0.86;
+    const rateEURUSD = 1.16;
 
-formElement.addEventListener("input", () => {
+    let final = amount * exchange;
 
-    let exchange = exchangeElement.value;
-    let amount = amountElement.value;
+    switch (amount, exchange) {
+        case "EUR-PLN":
+            return amount * rateEURPLN
+        case "PLN-EUR":
+            return amount * ratePLNEUR
+        case "PLN-USD":
+            return amount * ratePLNUSD
+        case "USD-PLN":
+            return amount * rateUSDPLN
+        case "EUR-USD":
+            return amount * rateEURUSD
+        case "USD-EUR":
+            return amount * rateUSDEUR
+    }
 
-    let final = exchange * amount;
-
-    finalElement.innerText = final.toFixed(2)
+    finalElement.innerText = final.toFixed(2) ${}
 })
+
+const currncySelection = (exchangeElement) => {
+
+    switch (exchange) {
+        case "EUR-PLN":
+            return "PLN"
+        case "PLN-EUR":
+            return "EUR"
+        case "PLN-USD":
+            return "USD"
+        case "USD-PLN":
+            return "PLN"
+        case "EUR-USD":
+            return "USD"
+        case "USD-EUR":
+            return "EUR"
+    }
+}
+
+}
