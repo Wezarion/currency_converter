@@ -1,13 +1,15 @@
 {
     const formElement = document.querySelector(".js-form")
-    const exchangeElement = document.querySelector(".js-exchange")
-    const amountElement = document.querySelector(".js-amount")
     const finalElement = document.querySelector(".js-final")
 
 formElement.addEventListener("input", () => { 
+
+    const exchangeElement = document.querySelector(".js-exchange");
+    const amountElement = document.querySelector(".js-amount");
     const amount = amountElement.value;
     const exchange = exchangeElement.value;
-    
+
+    const calculateAmmount = (amount, exchange) => {
     const ratePLNEUR = 0.24;
     const ratePLNUSD = 0.27;
     const rateEURPLN = 4.25;
@@ -15,7 +17,6 @@ formElement.addEventListener("input", () => {
     const rateUSDEUR = 0.86;
     const rateEURUSD = 1.16;
 
-    let final = amount * exchange;
 
     switch (amount, exchange) {
         case "EUR-PLN":
@@ -31,11 +32,8 @@ formElement.addEventListener("input", () => {
         case "USD-EUR":
             return amount * rateUSDEUR
     }
-
-    finalElement.innerText = final.toFixed(2) ${}
-})
-
-const currncySelection = (exchangeElement) => {
+    }
+    const currncySelection = (exchangeElement) => {
 
     switch (exchange) {
         case "EUR-PLN":
@@ -51,6 +49,8 @@ const currncySelection = (exchangeElement) => {
         case "USD-EUR":
             return "EUR"
     }
-}
+    };
+        finalElement.innerHTML = ${amount.toFixed(2)} ${exchange}
+});
 
 }
