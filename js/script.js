@@ -1,5 +1,4 @@
 {
-    const finalElement = document.querySelector(".js-final")
     const exchangeElement = document.querySelector(".js-exchange");
     const exchange = exchangeElement.value;
 
@@ -56,9 +55,16 @@
         const form = document.querySelector(".js-form");
 
         form.addEventListener("input",calculateAmmount,currncySelection);
+        finalValue();
     };
+
+    const finalValue = () => {
+        const finalElement = document.querySelector(".js-final");
+
+        finalElement.innerHTML = `${final.toFixed(2)} ${exchange}`;
+    }
 
     init();
 
-    finalElement.innerHTML = `${final.toFixed(2)} ${exchange}`;
+    
 };
