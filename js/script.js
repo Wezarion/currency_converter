@@ -3,10 +3,10 @@
     const exchangeElement = document.querySelector(".js-exchange");
     const exchange = exchangeElement.value;
 
-    const calculateAmmount = (amount, exchange) => {
+    const calculateAmmount = (exchange) => {
 
         const amountElement = document.querySelector(".js-amount");
-        const amount = +amountElement.value;
+        let amount = +amountElement.value;
 
         const ratePLNEUR = 0.24;
         const ratePLNUSD = 0.27;
@@ -15,9 +15,7 @@
         const rateUSDEUR = 0.86;
         const rateEURUSD = 1.16;
 
-        let final;
-
-        switch (amount, final, exchange) {
+        switch (exchange) {
             case "EUR-PLN":
                 return amount * rateEURPLN
             case "PLN-EUR":
@@ -31,6 +29,7 @@
             case "USD-EUR":
                 return amount * rateUSDEUR
         }
+        return final;
     };
 
     const currncySelection = (exchange) => {
@@ -49,6 +48,7 @@
             case "USD-EUR":
                 return "EUR"
         }
+        return exchange;
     };
 
     const init = () => {
@@ -60,5 +60,5 @@
 
     init();
 
-    finalElement.innerHTML = `${final.toFixed(2)} ${exchange}`
+    finalElement.innerHTML = `${final.toFixed(2)} ${exchange}`;
 };
