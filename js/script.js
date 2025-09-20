@@ -42,6 +42,30 @@
         }
     };
 
+    const primaryCurrency = (exchange) => {
+
+        switch (exchange) {
+            case "EUR-PLN":
+                return "EUR"
+            case "PLN-EUR":
+                return "PLN"
+            case "PLN-USD":
+                return "PLN"
+            case "USD-PLN":
+                return "USD"
+            case "EUR-USD":
+                return "EUR"
+            case "USD-EUR":
+                return "USD"
+        }
+    };
+
+    const primaryText =(label) => {
+        const labelElement = document.querySelector(".js-labelText");
+        labelElement.innerHTML = `Podaj kwote ${label}`;
+
+    }
+
     const finalText = (final, currency) => {
         const finalElement = document.querySelector(".js-final");
         finalElement.innerHTML = `${final.toFixed(2)} ${currency}`;
@@ -50,13 +74,16 @@
     const onFormInput = () => {
             const amountElement = document.querySelector(".js-amount");
             const exchangeElement = document.querySelector(".js-exchange");
+            
         
             const exchange = exchangeElement.value;
             const amount = +amountElement.value;
 
+            const label = primaryCurrency(exchange)
             const final = calculateAmmount(amount,exchange);
             const currency = currncySelection(exchange);
 
+            primaryText(label);
             finalText(final, currency);
     }
 
