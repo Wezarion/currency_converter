@@ -1,11 +1,5 @@
 {
-    const exchangeElement = document.querySelector(".js-exchange");
-    const exchange = exchangeElement.value;
-
-    const calculateAmmount = (exchange) => {
-
-        const amountElement = document.querySelector(".js-amount");
-        let amount = +amountElement.value;
+    const calculateAmmount = (amount, exchange) => {
 
         const ratePLNEUR = 0.24;
         const ratePLNUSD = 0.27;
@@ -14,21 +8,20 @@
         const rateUSDEUR = 0.86;
         const rateEURUSD = 1.16;
 
-        switch (exchange) {
+        switch (amount, exchange) {
             case "EUR-PLN":
-                return amount * rateEURPLN
+                return amount * rateEURPLN;
             case "PLN-EUR":
-                return amount * ratePLNEUR
+                return amount * ratePLNEUR;
             case "PLN-USD":
-                return amount * ratePLNUSD
+                return amount * ratePLNUSD;
             case "USD-PLN":
-                return amount * rateUSDPLN
+                return amount * rateUSDPLN;
             case "EUR-USD":
-                return amount * rateEURUSD
+                return amount * rateEURUSD;
             case "USD-EUR":
-                return amount * rateUSDEUR
-        }
-        return final;
+                return amount * rateUSDEUR;
+        }   
     };
 
     const currncySelection = (exchange) => {
@@ -47,24 +40,33 @@
             case "USD-EUR":
                 return "EUR"
         }
-        return exchange;
     };
 
-    const init = () => {
-
-        const form = document.querySelector(".js-form");
-
-        form.addEventListener("input",calculateAmmount,currncySelection);
-        finalValue();
-    };
-
-    const finalValue = () => {
+    const finalText = (final, currency) => {
         const finalElement = document.querySelector(".js-final");
-
-        finalElement.innerHTML = `${final.toFixed(2)} ${exchange}`;
+        finalElement.innerHTML = `${final.toFixed(2)} ${currency}`;
     }
 
-    init();
+    const onFormInput = () => {
+            const amountElement = document.querySelector(".js-amount");
+            const exchangeElement = document.querySelector(".js-exchange");
+        
+            const exchange = exchangeElement.value;
+            const amount = +amountElement.value;
 
+            const final = calculateAmmount(amount,exchange);
+            const currency = currncySelection(exchange);
+
+            finalText(final, currency);
+    }
+
+    const init = () => {
+        const form = document.querySelector(".js-form");
+
+        form.addEventListener("input", onFormInput);
+        
+    };
+
+    init();
     
 };
