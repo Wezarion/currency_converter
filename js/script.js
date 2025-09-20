@@ -62,7 +62,7 @@
 
     const primaryText =(label) => {
         const labelElement = document.querySelector(".js-labelText");
-        labelElement.innerHTML = `Podaj kwote ${label}`;
+        labelElement.innerHTML = `Podaj kwote ${label}:`;
 
     }
 
